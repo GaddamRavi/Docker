@@ -1,11 +1,20 @@
-FROM almalinux:9
-RUN mkdir /tmp/expense
-WORKDIR /tmp/expense
-RUN echo "Hello World" > hello.txt
-RUN useradd expense
-USER expense
-
+ARG version
+FROM almalinux:${version:-9}
+ENV name=expert \
+      usernmae=expense
+ARG usernmae=expense
+ENV usernmae=$usernmae
+RUN echo "hello:${usernmae}, image-version=${version} " > /tmp/hello.txt
 CMD ["sleep", "1000"]
+
+
+# RUN mkdir /tmp/expense
+# WORKDIR /tmp/expense
+# RUN echo "Hello World" > hello.txt
+# RUN useradd expense
+# USER expense
+
+# CMD ["sleep", "1000"]
 
 
 
