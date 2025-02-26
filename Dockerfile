@@ -1,7 +1,16 @@
 FROM almalinux:9
+RUN mkdir /tmp/expense
+WORKDIR /tmp/expense
+RUN echo "Hello World" > hello.txt
+RUN useradd expense
+USER expense
 
-CMD ["google.com"]
-ENTRYPOINT [ "ping" ]
+CMD ["sleep", "1000"]
+
+
+
+# CMD ["google.com"]
+# ENTRYPOINT [ "ping" ]
 
 # RUN dnf install nginx -y
 # COPY index.html /usr/share/nginx/html/index.html
